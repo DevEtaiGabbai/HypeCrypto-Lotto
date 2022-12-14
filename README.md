@@ -82,5 +82,5 @@ This repo is released under the terms of the MIT license. For more information, 
 
 
 Thanks a lot to the original creator: https://github.com/njaladan
-**this repo is a fixed version of the original repo you can find here 👇**
+**this repo is a fixed version of the original repo you can find here 👉**
 https://github.com/njaladan/Etherball
