@@ -1,15 +1,12 @@
 # Etherball 🎟
 [![Build Status](https://travis-ci.org/njaladan/Etherball.svg?branch=master)](https://travis-ci.org/njaladan/Etherball)
 
-Etherball is a simple lottery web app with numerical tickets and a fixed jackpot built for the Ethereum blockchain.
+HypeCrypto Lotto is a simple lottery dAPP with numerical tickets and a fixed jackpot built for the Ethereum blockchain.
 
-<p align="center">
-  <img src="./img/demo.gif" height="80%" width="80%">
-</p>
 
 
 ## Features
-Etherball features:
+Lotto features:
 
  • Easy to purchase ticket interface (and prevention of duplicate tickets)  
 
@@ -35,13 +32,17 @@ Etherball features:
  • [Web3](https://github.com/ethereum/web3.js/)
 
 ## Installation
-Installing Etherball to use on your machine is simple. First,  
+Installing Lotto to use on your machine is simple. First, run
 
-`git clone`  
+`gh repo clone FlightSimCentral/HypeCrypto-Lotto`  
 
 the repository. Next, navigate to the cloned directory and install the necessary Node.js modules with  
 
-`npm install`  
+`npm install`
+
+If truffle doesn't install make sure to run
+
+'npm install -g truffle'
 
 Create and place your 12-word mnemonic private key at the location  
 
@@ -49,7 +50,7 @@ Create and place your 12-word mnemonic private key at the location
 
 Initialize a local blockchain with
 
-`testrpc`
+`truffle testrpc`
 
 and deploy the smart contract with
 
@@ -58,6 +59,10 @@ and deploy the smart contract with
 Finally, to open the web app,  
 
 `npm run dev`
+
+And to build run
+
+'npm run build'
 
 
 ## Miscellaneous
@@ -69,4 +74,9 @@ Finally, to open the web app,
 
 ## Licensing
 
-Etherball is released under the terms of the MIT license. For more information, see https://opensource.org/licenses/MIT.
+This repo is released under the terms of the MIT license. For more information, see https://opensource.org/licenses/MIT.
+
+
+Thanks a lot to the original creator: https://github.com/njaladan
+**this repo is a fixed version of the original repo you can find here 👇**
+https://github.com/njaladan/Etherball
