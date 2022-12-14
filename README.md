@@ -42,11 +42,15 @@ the repository. Next, navigate to the cloned directory and install the necessary
 
 If truffle doesn't install make sure to run
 
-'npm install -g truffle'
+`npm install -g truffle`
 
 Create and place your 12-word mnemonic private key at the location  
 
 `keystore/eth_keystore.txt`  
+
+You can create a key here: https://iancoleman.io/bip39/ 
+
+Make sure to set it to 12 words **not 15** Do not share it with anyone!
 
 Initialize a local blockchain with
 
@@ -62,7 +66,7 @@ Finally, to open the web app,
 
 And to build run
 
-'npm run build'
+`npm run build`
 
 
 ## Miscellaneous
