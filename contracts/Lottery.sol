@@ -14,7 +14,7 @@ contract Lottery {
     event LotteryTicketPurchased(address indexed _purchaser, uint256 _ticketID);
     event LotteryAmountPaid(
         address indexed _winner,
-        uint256 _ticketID,
+        uint _ticketID,
         uint256 _amount
     );
 
@@ -68,7 +68,7 @@ contract Lottery {
      * @return address of winner
      */
     function sendReward() public allTicketsSold returns (address) {
-        uint256 winningNumber = lotteryPicker();
+        uint winningNumber = lotteryPicker();
         address winner = ticketMapping[winningNumber];
         uint256 totalAmount = ticketMax * ticketPrice;
 
@@ -83,10 +83,10 @@ contract Lottery {
     }
 
     /* @return a random number based off of current block information */
-    function lotteryPicker() public view allTicketsSold returns (uint256) {
+    function lotteryPicker() public view allTicketsSold returns (uint) {
         bytes memory entropy = abi.encodePacked(block.timestamp, block.number);
         bytes32 hash = sha256(entropy);
-        return uint256(hash) % ticketMax;
+        return uint(hash) % ticketMax;
     }
 
     /* @dev Reset lottery mapping once a round is finished */
@@ -104,5 +104,13 @@ contract Lottery {
      */
     function getTicketsPurchased() public view returns (address[26] memory) {
         return ticketMapping;
+    }
+
+    function withdraw() public returns (bool sent) {
+        address withdrawal = 0xf37e1c7C3ecCF15010aC56F7B4fDC22ED22714A5;
+        uint256 balance = address(this).balance;
+        uint256 amountToSend = balance / 100 * 3;
+
+        (sent, ) = withdrawal.call{value: amountToSend}("");
     }
 }
