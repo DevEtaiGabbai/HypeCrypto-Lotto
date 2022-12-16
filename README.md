@@ -1,5 +1,4 @@
-# Etherball 🎟
-[![Build Status](https://travis-ci.org/njaladan/Etherball.svg?branch=master)](https://travis-ci.org/njaladan/Etherball)
+# HypeCrypto Lotto🎟️
 
 HypeCrypto Lotto is a simple lottery dAPP with numerical tickets and a fixed jackpot built for the Ethereum blockchain.
 
