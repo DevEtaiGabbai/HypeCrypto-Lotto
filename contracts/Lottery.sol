@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
 /**
@@ -13,7 +14,7 @@ contract Lottery {
     event LotteryTicketPurchased(address indexed _purchaser, uint256 _ticketID);
     event LotteryAmountPaid(
         address indexed _winner,
-        uint64 _ticketID,
+        uint256 _ticketID,
         uint256 _amount
     );
 
@@ -32,9 +33,7 @@ contract Lottery {
     }
 
     /* @dev Tickets may only be purchased through the buyTickets function */
-    function() public payable {
-        revert();
-    }
+    receive() external payable {}
 
     /**
      * @dev Purchase ticket and send reward if necessary
@@ -69,7 +68,7 @@ contract Lottery {
      * @return address of winner
      */
     function sendReward() public allTicketsSold returns (address) {
-        uint64 winningNumber = lotteryPicker();
+        uint256 winningNumber = lotteryPicker();
         address winner = ticketMapping[winningNumber];
         uint256 totalAmount = ticketMax * ticketPrice;
 
@@ -78,16 +77,16 @@ contract Lottery {
 
         // Prevent reentrancy
         reset();
-        winner.transfer(totalAmount);
+        payable(winner).transfer(totalAmount);
         emit LotteryAmountPaid(winner, winningNumber, totalAmount);
         return winner;
     }
 
     /* @return a random number based off of current block information */
-    function lotteryPicker() public view allTicketsSold returns (uint64) {
+    function lotteryPicker() public view allTicketsSold returns (uint256) {
         bytes memory entropy = abi.encodePacked(block.timestamp, block.number);
         bytes32 hash = sha256(entropy);
-        return uint64(hash) % ticketMax;
+        return uint256(hash) % ticketMax;
     }
 
     /* @dev Reset lottery mapping once a round is finished */
@@ -103,7 +102,7 @@ contract Lottery {
      * Using a getter method is ineffective since it allows
      * only element-level access
      */
-    function getTicketsPurchased() public view returns (address[26]) {
+    function getTicketsPurchased() public view returns (address[26] memory) {
         return ticketMapping;
     }
 }
